@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- For IE 11, Chrome, Firefox, Safari, Opera -->
-        <link rel="icon" href="{{ asset('images/favicon-16.png') }}" sizes="16x16" type="image/png">
-        <link rel="icon" href="{{ asset('images/favicon-32.png') }}" sizes="32x32" type="image/png">
-        <link rel="icon" href="{{ asset('images/favicon-48.png') }}" sizes="48x48" type="image/png">
-        <link rel="icon" href="{{ asset('images/favicon-62.png') }}" sizes="62x62" type="image/png">
-        <link rel="icon" href="{{ asset('images/favicon-192.png') }}" sizes="192x192" type="image/png">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <meta name="theme-color" content="#F4645F">
+    <!-- For IE 11, Chrome, Firefox, Safari, Opera --> 
+    <link rel="icon" href="{{ asset('images/favicon-16.png') }}" sizes="16x16" type="image/png"> 
+    <link rel="icon" href="{{ asset('images/favicon-32.png') }}" sizes="32x32" type="image/png"> 
+    <link rel="icon" href="{{ asset('images/favicon-48.png') }}" sizes="48x48" type="image/png"> 
+    <link rel="icon" href="{{ asset('images/favicon-62.png') }}" sizes="62x62" type="image/png"> 
+    <link rel="icon" href="{{ asset('images/favicon-192.png') }}" sizes="192x192" type="image/png"> 
 
-        @yield('header')
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <title>Laravel</title>
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    </head>
-    <body>
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
 
-        <div class="container">
-            @yield('content')
-        </div>
+    @yield('header')
+</head>
+<body>
+    <div id="app">
+        @include('layouts.nav')
 
-    </body>
+        @yield('content')
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 
     @yield('footer')
-
+</body>
 </html>
